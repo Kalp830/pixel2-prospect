@@ -1248,7 +1248,6 @@
     } else {
         var hero_btn = document.querySelector(".hero__text-2 #btn_wrapper")
     }
-    console.log(hero_btn)
     tHero.from(hero_btn, {
         opacity: 0,
         y: -70,
@@ -3638,6 +3637,668 @@
             }
         });
     }
+
+
+    //////////////////////////////////////////////////
+    // Woocommerce Hero Slider
+    const woocommerce_hero = new Swiper('.woocomerce-active', {
+        loop: true,
+        speed: 2000,
+        autoplay: {
+            delay: 2000,
+        },
+        effect: "fade",
+        pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+        },
+        navigation: {
+            nextEl: '.woocomerce__hero-next',
+            prevEl: '.woocomerce__hero-prev',
+        },
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+    });
+
+
+    //////////////////////////////////////////////////
+    // Woocommerce Feature Slider
+    const woocommerce_feature = new Swiper('.feature1-active', {
+        speed: 2000,
+        slidesPerView: 4,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-parrow',
+            prevEl: '.swiper-button-narrow',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            991: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            1200: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+        }
+    });
+
+
+    //////////////////////////////////////////////////
+    // Woocommerce Feature Slider 2
+    const woocommerce_feature_2 = new Swiper('.feature2-active', {
+        speed: 2000,
+        slidesPerView: 4,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: '.swiper-button-parrow',
+            prevEl: '.swiper-button-narrow',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            991: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            1200: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+        }
+    });
+
+
+    //////////////////////////////////////////////////
+    // Woocommerce Category Slider
+    const woocommerce_category = new Swiper('.category-active', {
+        speed: 2000,
+        slidesPerView: 9,
+        spaceBetween: 5,
+        navigation: {
+            nextEl: '.swiper-button-parrow',
+            prevEl: '.swiper-button-narrow',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            480: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            },
+            640: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            },
+            900: {
+                slidesPerView: 6,
+                spaceBetween: 20
+            },
+            1200: {
+                slidesPerView: 8,
+                spaceBetween: 20
+            },
+        }
+    });
+
+
+    //////////////////////////////////////////////////
+    // Woocommerce Brand Slider
+    const woocommerce_brand = new Swiper('.woocomerce-brand-active', {
+        loop: true,
+        speed: 6000,
+        autoplay: {
+            delay: 1,
+        },
+        allowTouchMove: false,
+        slidesPerView: 9,
+        spaceBetween: 5,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 5,
+            },
+            700: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            },
+            1000: {
+                slidesPerView: 5,
+                spaceBetween: 40
+            }
+        }
+    });
+
+
+    //////////////////////////////////////////////////
+    // Woocommerce Testimonial Slider
+    const woocommerce_testimonial = new Swiper('.woocomerce-testimonial', {
+        speed: 2000,
+        slidesPerView: 1,
+        spaceBetween: 1,
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 5,
+            },
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 30
+            },
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 40
+            }
+        }
+    });
+
+
+    /////////////////////////////////////////////////
+    // Featured Products Animation
+    gsap.set(".wc_feature_products .woocomerce__feature-product", {
+        x: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".wc_feature_products .woocomerce__feature-product")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                x: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".wc_feature_products .woocomerce__feature-product", {
+            scrollTrigger: {
+                trigger: ".wc_feature_products .woocomerce__feature-product",
+                start: "top center+=300",
+                markers: false
+            },
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 2,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // New Arrival Products Animation
+    gsap.set(".new_arrival_products .woocomerce__feature-product", {
+        x: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".new_arrival_products .woocomerce__feature-product")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                x: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".new_arrival_products .woocomerce__feature-product", {
+            scrollTrigger: {
+                trigger: ".new_arrival_products .woocomerce__feature-product",
+                start: "top center+=300",
+                markers: false
+            },
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 2,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // You Missed Products Animation
+    gsap.set(".missed_products .woocomerce__feature-product", {
+        x: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".missed_products .woocomerce__feature-product")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                x: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".missed_products .woocomerce__feature-product", {
+            scrollTrigger: {
+                trigger: ".missed_products .woocomerce__feature-product",
+                start: "top center+=300",
+                markers: false
+            },
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 2,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////
+    // Category Products Animation
+    gsap.set(".wc_category_products .woocomerce__category-item", {
+        x: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".wc_category_products .woocomerce__category-item")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                x: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".wc_category_products .woocomerce__category-item", {
+            scrollTrigger: {
+                trigger: ".wc_category_products .woocomerce__category-item",
+                start: "top center+=300",
+                markers: false
+            },
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 2,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // Instagram Images Animation
+    gsap.set(".wc_instagram_img .woocomerce__instagram-item", {
+        x: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".wc_instagram_img .woocomerce__instagram-item")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                x: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".wc_instagram_img .woocomerce__instagram-item", {
+            scrollTrigger: {
+                trigger: ".wc_instagram_img .woocomerce__instagram-item",
+                start: "top center+=300",
+                markers: false
+            },
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 2,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // Single Product Images Animation
+    gsap.set(".product_imgs img", {
+        y: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".product_imgs img")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".product_imgs img", {
+            scrollTrigger: {
+                trigger: ".product_imgs img",
+                start: "top center+=300",
+                markers: false
+            },
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 2,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // Single Product Content Animation
+    gsap.set(".wc_slide_btm", {
+        y: 50,
+        opacity: 0
+    });
+
+    if (device_width < 1023) {
+        const blogList = gsap.utils.toArray(".wc_slide_btm")
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                }
+            })
+            blogTl.to(item, {
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        })
+    } else {
+        gsap.to(".wc_slide_btm", {
+            scrollTrigger: {
+                trigger: ".wc_slide_btm",
+                start: "top center+=300",
+                markers: false
+            },
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 1.5,
+            stagger: {
+                each: 0.3
+            }
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    //  Buttons 
+    let all_buttons_wc = gsap.utils.toArray(".wc_btn_wrapper");
+
+    all_buttons_wc.forEach((btn) => {
+        if (!(btn.classList.contains("hero__button"))) {
+            gsap.from(btn, {
+                scrollTrigger: {
+                    trigger: btn,
+                    start: "top center+=150",
+                    markers: false,
+                },
+                opacity: 0,
+                y: -70,
+                ease: "bounce",
+                duration: 1.5,
+            })
+        }
+    })
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // Shop color buttons 
+    $("#color").click(function() {
+        $(this).toggleClass("active");
+        $(".woocomerce__filtering-colors").slideToggle("slow");
+    });
+    $("#price").click(function() {
+        $(this).toggleClass("active");
+        $(".woocomerce__filtering-price").slideToggle("slow");
+    });
+    $("#brand").click(function() {
+        $(this).toggleClass("active");
+        $(".woocomerce__filtering-brand").slideToggle("slow");
+    });
+
+    $("#sort").click(function() {
+        $(this).toggleClass("active");
+        $(".woocomerce__filtering-sort").slideToggle("slow");
+    });
+
+    $("#rating").click(function() {
+        $(this).toggleClass("active");
+        $(".woocomerce__filtering-rate").slideToggle("slow");
+    });
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    let wc_width = screen.width;
+    if (wc_width < 992) {
+        $(".woocomerce__filtering-filtericon").click(function() {
+            $(".woocomerce__shopsidebar").toggleClass("showed");
+        });
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    var range_slider = $("#slider-range");
+
+    if (range_slider) {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 6000,
+            values: [0, 6000],
+            slide: function(event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val(
+            "$" +
+            $("#slider-range").slider("values", 0) +
+            " - $" +
+            $("#slider-range").slider("values", 1)
+        );
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    //
+    $("#slider_range_2").slider({
+        range: true,
+        min: 0,
+        max: 6000,
+        values: [0, 6000],
+        slide: function(event, ui) {
+            $("#amount_2").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        }
+    });
+    $("#amount_2").val(
+        "$" +
+        $("#slider_range_2").slider("values", 0) +
+        " - $" +
+        $("#slider_range_2").slider("values", 1)
+    );
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // increment / decrement 
+    $(".counter__increment, .counter__decrement").click(function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $counter__input = $(this).parent().find(".counter__input");
+        var $currentVal = parseInt($(this).parent().find(".counter__input").val());
+
+        //Increment
+        if ($currentVal != NaN && $this.hasClass("counter__increment")) {
+            $counter__input.val($currentVal + 1);
+        }
+        //Decrement
+        else if ($currentVal != NaN && $this.hasClass("counter__decrement")) {
+            if ($currentVal >= 1) {
+                $counter__input.val($currentVal - 1);
+            }
+        }
+    });
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // Shop Category
+    let items = document.querySelectorAll('.cateitem');
+    let categorys = document.querySelectorAll('.cat1');
+    let minuses = document.querySelectorAll('.minus')
+    items.forEach((item) => {
+        item.addEventListener('click', () => {
+            minuses.forEach((m) => {
+                removefunc()
+                m.classList.add('show')
+            })
+        })
+    })
+
+
+    function removefunc() {
+        minuses.forEach((e) => {
+            e.classList.remove('show');
+        })
+    }
+    /////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////
+    // Category Products Animation
+
+    if (device_width > 1300) {
+        const blogList = gsap.utils.toArray(".woocomerce__instagram-item:nth-child(odd)");
+        blogList.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                    scrub: true,
+                }
+            });
+            blogTl.to(item, {
+                y: -50,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        });
+
+        const blogList2 = gsap.utils.toArray(".woocomerce__instagram-item:nth-child(even)");
+        blogList2.forEach((item, i) => {
+            let blogTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top center+=200",
+                    scrub: true,
+                }
+            });
+            blogTl.to(item, {
+                y: 50,
+                opacity: 1,
+                ease: "power2.out",
+                duration: 1.5,
+            })
+        });
+    }
+    /////////////////////////////////////////////////
+
+
 
 
 
