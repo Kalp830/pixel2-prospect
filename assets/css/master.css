@@ -3727,7 +3727,7 @@ img {
     font-size: 16px;
     line-height: 16px;
     color: var(--black-2);
-    padding: 27px 0;
+    padding: 27px 0 10px 0;
     outline: none;
     text-transform: capitalize;
     -webkit-transform: translateY(var(--y)) translateZ(0);
@@ -4006,6 +4006,7 @@ img {
 
 .main-menu-3>li>a:hover {
     --y: -4px;
+    border-bottom: 3px solid var(--purple-2);
 }
 
 .main-menu-3>li>a:hover span {
@@ -27660,7 +27661,7 @@ main {
 
 .feature__content-right {
     background-color: #1E2024;
-    padding: 143px 60px 0px 110px;
+    padding: 95px 60px 0px 110px;
     position: relative;
 }
 
